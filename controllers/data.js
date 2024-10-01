@@ -4,11 +4,13 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAllData = async (req, res) => {
     try {
-        const data = await mongodb.getDb().db('cse341').collection('data').find();
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(data);
-    } catch (error) {
-        res.status(500).json(error);
+        const result = await mongodb.getDatabase().db().collection('football').find();
+        result.toArray().then((lists) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists);
+        });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 }
 
