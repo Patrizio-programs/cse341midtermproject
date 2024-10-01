@@ -1,0 +1,14 @@
+{
+  "name": "cse341midtermproject",
+  "version": "1.0.0",
+  "description": "midterm project with random names of a few football players and data on them",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
