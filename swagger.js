@@ -1,25 +1,22 @@
-const AutoSwagger = require('auto-swagger');
+const AutoSwag = require('swagger-autogen')();
 
-module.exports = AutoSwagger({
-    api: app,
-    file: 'swagger.json',
-    host: 'localhost:3000',
-    schemes: ['http'],
-    basePath: '/',
+const doc = {
     info: {
-        title: 'CSE341 Midterm Project',
-        description: 'API endpoints for the CSE341 Midterm Project',
-        version: '1.0.0'
-    }
-});
-
+        title: 'Midterm Project',
+        description: 'Midterm Project',
+    },
+    host: 'http://localhost:3000/',
+    schemes: ['https', 'http'],
+};
 
 const outputFile = './swagger.json';
 const endpointFiles = ['./routes/index.js'];
 
-AutoSwag(endpointFiles, outputFile, doc).then(() => {
+AutoSwag(endpointFiles, outputFile, doc)
+  .then(() => {
     console.log('Swagger file created');
-}).catch((err) => {
-    console.log('Error creating swagger file');
-    console.log(err);
-});
+  })
+  .catch((err) => {
+    console.error('Error creating Swagger file:', err);
+    throw err; // re-throw the error to stop the script
+  });
