@@ -1,0 +1,5 @@
+### Put test
+PUT http://localhost:3000/data/66ff5e79b1da125f5ed51921 HTTP/1.1
+Content-Type: application/json
+
+{ "name": "Updated Name" }
