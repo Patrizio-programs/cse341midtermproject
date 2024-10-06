@@ -5,7 +5,7 @@
     "description": "Midweek API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341midtermproject.onrender.com",
   "basePath": "/",
   "schemes": [
     "https",

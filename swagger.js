@@ -5,7 +5,7 @@ const doc = {
     title: 'Midterm API',
     description: 'Midterm API'
   },
-  host: 'localhost:3000',
+  host: 'cse341midtermproject.onrender.com',
   schemes: ['https', 'http']
 };
 
