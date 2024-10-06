@@ -11,7 +11,6 @@ app.use((req, res, next) => {
     next();
 })
 
-
 app.use('/', require('./routes/index.js'))
 
 const port = process.env.PORT || 3000

@@ -20,7 +20,7 @@ const getDataById = async (req, res) => {
         const id = req.params.id;
         const result = await mongodb
             .getDatabase()
-            .db('football')
+            .db()
             .collection('football')
             .find({ _id: ObjectId(id) });
         result.toArray().then((lists) => {
