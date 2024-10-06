@@ -6,7 +6,7 @@ router.get('/', (req, res) => {res.send('This is the home page for the midterm p
 
 //connect data
 router.use('/data', require('./data.js'));
-
+router.use('/', require('./swagger'));
 //init db
 mongodb.initDb((err) => {
     if (!err) {

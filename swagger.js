@@ -1,22 +1,18 @@
-const AutoSwag = require('swagger-autogen')();
+const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
-    info: {
-        title: 'Midterm Project',
-        description: 'Midterm Project',
-    },
-    host: 'http://localhost:3000/',
-    schemes: ['https', 'http'],
+  info: {
+    title: 'Midweek API',
+    description: 'Midweek API'
+  },
+  host: 'localhost:3000',
+  schemes: ['https', 'http']
 };
 
 const outputFile = './swagger.json';
-const endpointFiles = ['./routes/index.js'];
+const routes = ['./routes/index.js', './routes/data.js'];
 
-AutoSwag(endpointFiles, outputFile, doc)
-  .then(() => {
-    console.log('Swagger file created');
-  })
-  .catch((err) => {
-    console.error('Error creating Swagger file:', err);
-    throw err; // re-throw the error to stop the script
-  });
+/* NOTE: If you are using the express Router, you must pass in the 'routes' only the 
+root file where the route starts, such as index.js, app.js, routes.js, etc ... */
+
+swaggerAutogen(outputFile, routes, doc);
