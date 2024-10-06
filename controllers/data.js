@@ -55,10 +55,9 @@ const addData = async (req, res) => {
     }
 }
 
-//Put
+//PUT
 const updateData = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-
     const datafields ={
         name: req.body.name,
         position: req.body.position,
@@ -67,15 +66,14 @@ const updateData = async (req, res) => {
         foot: req.body.foot
     };
     try {
-        const id = req.params.id;
-        const result = await mongodb
-            .getDatabase()
-            .db('football')
-            .collection('football')
-            .updateOne({ _id: userId }, { $set: datafields });
-        res.status(200).json(result);
+        const result = await mongodb.getDatabase().db().collection('football').updateOne({ _id: userId }, { $set: datafields });
+        if (result.modifiedCount === 0) {
+            res.status(404).json({ message: 'Player not found' });
+        } else {
+            res.status(200).json(result);
+        }
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: 'Error updating player', error: err.message });
     }
 }
 
@@ -86,7 +84,7 @@ const deleteData = async (req, res) => {
     try {
         const result = await mongodb
             .getDatabase()
-            .db('football')
+            .db()
             .collection('football')
             .deleteOne({ _id: userId }, true);
         res.status(200).json(result);
