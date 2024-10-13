@@ -3,11 +3,12 @@ const router = require('express').Router();
 
 
 const dataController = require('../controllers/data');
+const isAuthenticated = require('../middleware/Authenticate');
 router.get('/', dataController.getAllData)
-router.post('/', dataController.addData)
+router.post('/', isAuthenticated, dataController.addData)
 router.get('/:id', dataController.getDataById)
-router.put('/:id', dataController.updateData)
-router.delete('/:id', dataController.deleteData)
+router.put('/:id', isAuthenticated, dataController.updateData)
+router.delete('/:id', isAuthenticated, dataController.deleteData)
 
 
 module.exports = router
